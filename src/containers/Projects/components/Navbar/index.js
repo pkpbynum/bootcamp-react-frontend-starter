@@ -7,15 +7,18 @@ import {
   SubmitButton,
   NavButton
 } from "./styles";
+import ReactModal from "react-modal";
 class Navbar extends Component {
-  state = { show: false };
-
-  showModal = () => {
-    this.setState({ show: true });
+  constructor() {
+    super();
+    this.state = { showModal: false };
+  }
+  handleOpenModal = () => {
+    this.setState({ showModal: true });
   };
 
-  hideModal = () => {
-    this.setState({ show: false });
+  handleCloseModal = () => {
+    this.setState({ showModal: false });
   };
 
   render() {
@@ -25,7 +28,24 @@ class Navbar extends Component {
           <Container>
             <NavItems>
               <li>
-                <NavButton onClick={this.showModal}>Create Group</NavButton>
+                <NavButton onClick={this.handleOpenModal}>
+                  Create Group
+                </NavButton>
+                <ReactModal
+                  isOpen={this.state.showModal}
+                  contentLabel="Inline Styles Modal Example"
+                  style={{
+                    // overlay: {
+                    //   backgroundColor: "papayawhip"
+                    // },
+                    content: {
+                      // color: "lightsteelblue"
+                    }
+                  }}
+                >
+                  <p>Modal text!</p>
+                  <button onClick={this.handleCloseModal}>Close Modal</button>
+                </ReactModal>
               </li>
             </NavItems>
             <NavItems>
