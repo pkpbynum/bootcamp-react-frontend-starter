@@ -12,16 +12,17 @@ export const SidebarWrap = styled(Flex)`
   width: 10em;
 `;
 
-export const SidebarLink = styled(Link)`
+export const SidebarLink = styled.div`
   display: block;
   font-size: 1.5rem;
   color: white;
   background: red;
   text-align: right;
   margin-right: 1em;
+  cursor: pointer;
 `;
 
-export const LogoutLink = styled(Link)`
+export const LogoutLink = styled.div`
   display: block;
   font-size: 1.5rem;
   color: white;

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme";
-import Home from "./containers/Home/";
 import Projects from "./containers/Projects/";
+import Project from "./containers/Project";
 
 class App extends Component {
   render() {
