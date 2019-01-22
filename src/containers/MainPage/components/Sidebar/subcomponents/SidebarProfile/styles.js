@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { Flex } from "grid-styled";
-import { Link } from "react-router-dom";
 
 export const UserPicture = styled.div`
   height: 7em;
