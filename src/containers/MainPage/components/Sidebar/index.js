@@ -1,17 +1,13 @@
 import React from "react";
-import { SidebarWrap, SidebarLink, LogoutLink } from "./styles";
+import { SidebarWrap, SidebarLink, BottomLink, Group } from "./styles";
 import SidebarProfile from "./subcomponents/SidebarProfile";
 
 class Sidebar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <SidebarWrap>
         <SidebarProfile />
-        <div>
+        <Group>
           <SidebarLink onClick={() => this.props.changePage("tasks")}>
             Tasks
           </SidebarLink>
@@ -21,8 +17,11 @@ class Sidebar extends React.Component {
           <SidebarLink onClick={() => this.props.changePage("meetings")}>
             Meetings
           </SidebarLink>
-        </div>
-        <LogoutLink to="#">Logout</LogoutLink>
+        </Group>
+        <Group>
+          <BottomLink to="/projects">Back to Projects</BottomLink>
+          <BottomLink to="#">Logout</BottomLink>
+        </Group>
       </SidebarWrap>
     );
   }
