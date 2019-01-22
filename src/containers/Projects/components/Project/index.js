@@ -1,8 +1,9 @@
 import React from "react";
 import { Card } from "./styles";
+import { Flex } from "grid-styled";
 
 const Project = () => (
-  <div>
+  <Flex>
     <Card>
       <h1>Project name</h1>
       {/* <CardTitle>Special Title Treatment</CardTitle>
@@ -11,7 +12,7 @@ const Project = () => (
       </CardText>
       <Button>Button</Button> */}
     </Card>
-  </div>
+  </Flex>
 );
 
 export default Project;
