@@ -12,7 +12,7 @@ class App extends Component {
         <ThemeProvider theme={theme}>
           <div className="App">
             <Switch>
-              <Route path="/" component={Home} />
+              <Route path="/" component={Project} />
             </Switch>
             <Switch>
               <Route path="/projects" component={Projects} />

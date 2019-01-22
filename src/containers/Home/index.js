@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import Welcome from '../../components/Welcome'
+import React, { Component } from "react";
+import Sidebar from "../../components/Sidebar";
 
 class Home extends Component {
   render() {
-    return <Welcome />
+    return <Sidebar />;
   }
 }
 
-export default Home
+export default Home;
