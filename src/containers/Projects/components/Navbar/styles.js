@@ -21,7 +21,7 @@ export const Text = styled(Flex)`
   margin-top: 1em;
 `;
 
-export const Button = styled.button`
+export const SubmitButton = styled.button`
   border-radius: 3px;
   margin-left: 0.5em;
   margin-right: 0.5em;
@@ -30,6 +30,16 @@ export const Button = styled.button`
   border-color: ${({ theme }) => theme.colors.mangoTango};
   background-color: ${({ theme }) => theme.colors.mangoTango};
   font-family: ${({ theme }) => theme.fonts.openSans.family};
+`;
+
+export const NavButton = styled.button`
+  border-color: ${({ theme }) => theme.colors.purpleNavy};
+  background-color: ${({ theme }) => theme.colors.purpleNavy};
+  font-family: ${({ theme }) => theme.fonts.openSans.family};
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+  margin: 0.75em;
 `;
 
 export const Input = styled.input`
