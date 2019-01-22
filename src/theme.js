@@ -1,22 +1,27 @@
-import WebFont from 'webfontloader'
+import WebFont from "webfontloader";
 
 WebFont.load({
   google: {
-    families: ['Source Sans Pro:400', 'sans-serif']
+    families: ["Roboto:400,700", "Open Sans:400"]
   }
-})
+});
 
 const theme = {
   colors: {
-    devLogo: '#FC6264',
-    mainBackground: '#FFF'
+    purpleNavy: "#4E598C",
+    white: "#FFFFFF",
+    topaz: "#F9C784",
+    rajah: "#FCAF58",
+    mangoTango: "#FF8C42"
   },
   fonts: {
-    primary: {
-      family: 'Source Sans Pro, sans-serif',
-      weight: 400
+    openSans: {
+      family: "Open Sans"
+    },
+    roboto: {
+      family: "Roboto"
     }
   }
-}
+};
 
-export default theme
+export default theme;
