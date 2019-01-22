@@ -3,7 +3,7 @@ import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import Projects from "./containers/Projects/";
-import Project from "./containers/Project";
+import MainPage from "./containers/MainPage";
 
 class App extends Component {
   render() {

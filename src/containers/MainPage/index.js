@@ -11,7 +11,7 @@ const ContentSelector = ({ pageName }) => {
   return <Meetings />;
 };
 
-class Project extends Component {
+class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,4 +42,4 @@ class Project extends Component {
   }
 }
 
-export default Project;
+export default MainPage;
