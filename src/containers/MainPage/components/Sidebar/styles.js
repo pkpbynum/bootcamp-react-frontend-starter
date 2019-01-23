@@ -8,9 +8,10 @@ export const SidebarWrap = styled(Flex)`
   justify-content: space-around;
   align-items: right;
   background-color: ${({ theme }) => theme.colors.purpleNavy};
-  box-shadow: 0 0 28px rgba(0, 0, 0, 0.25), 0 0 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   height: 100vh;
   width: 10em;
+  z-index: 1;
 `;
 
 export const SidebarLink = styled(Flex)`

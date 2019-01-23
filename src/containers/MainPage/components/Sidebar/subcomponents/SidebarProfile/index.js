@@ -1,12 +1,12 @@
 import React from "react";
-import { Container, UserPicture } from "./styles";
+import { Container, UserPicture, UserName } from "./styles";
 
 class SidebarProfile extends React.Component {
   render() {
     return (
       <Container>
         <UserPicture />
-        <p>John Harvard</p>
+        <UserName>John Harvard</UserName>
       </Container>
     );
   }
