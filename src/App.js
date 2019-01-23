@@ -5,6 +5,7 @@ import theme from "./theme";
 import Projects from "./containers/Projects/";
 import MainPage from "./containers/MainPage";
 import Login from "./containers/Login";
+import Register from "./containers/Register";
 
 class App extends Component {
   render() {
@@ -16,7 +17,7 @@ class App extends Component {
               <Route path="/projects" component={Projects} />
               <Route path="/mainpage" component={MainPage} />
               <Route path="/login" component={Login} />
-              {/* <Route path="/register" component={Register} /> */}
+              <Route path="/register" component={Register} />
             </Switch>
           </div>
         </ThemeProvider>
