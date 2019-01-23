@@ -19,8 +19,8 @@ class Login extends Component {
           <Label>Password</Label>
           <Input type="password" />
           <Button>Login</Button>
-          <Text as="a" href="google.com">
-            New User? Click Here!
+          <Text as="a" href="/register">
+            New user? Click here!
           </Text>
         </LoginContainer>
       </Container>

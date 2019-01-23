@@ -9,7 +9,7 @@ export const Container = styled(Flex)`
   height: 100vh;
 `;
 
-export const LoginContainer = styled(Flex)`
+export const RegisterContainer = styled(Flex)`
   padding: 40px 20px;
   background-color: white;
   flex-direction: column;
