@@ -1,8 +1,15 @@
 import React from "react";
-
+import { Container } from "./styles";
 class Messages extends React.Component {
   render() {
-    return <h1>Messages Page!</h1>;
+    return (
+      <Container>
+        {/* <InnerContainer>
+          <MessageBox />
+          <DisplayBox />
+        </InnerContainer> */}
+      </Container>
+    );
   }
 }
 

@@ -1,12 +1,15 @@
 import styled from "styled-components";
+import { Flex } from "grid-styled";
 
-export const UserPicture = styled.div`
+export const UserPicture = styled(Flex)`
   height: 7em;
   width: 7em;
-  background: black;
+  box-shadow: inset 0 0 30px -3px;
   border-radius: 50%;
+  margin-bottom: 1em;
 `;
 
-export const Container = styled.div`
-  justify-self: center;
+export const Container = styled(Flex)`
+  flex-direction: column;
+  align-items: center;
 `;
