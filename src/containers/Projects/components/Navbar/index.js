@@ -6,8 +6,16 @@ import {
   Input,
   SubmitButton,
   NavButton
+  // ModalText,
+  // ModalTopContainer,
+  // ModalButton,
+  // ModalContainer,
+  // ModalBottomContainer,
+  // ModalInput
 } from "./styles";
-import ReactModal from "react-modal";
+// import ReactModal from "react-modal";
+import Modal from "../Modal";
+
 class Navbar extends Component {
   constructor() {
     super();
@@ -31,21 +39,10 @@ class Navbar extends Component {
                 <NavButton onClick={this.handleOpenModal}>
                   Create Group
                 </NavButton>
-                <ReactModal
-                  isOpen={this.state.showModal}
-                  contentLabel="Inline Styles Modal Example"
-                  style={{
-                    // overlay: {
-                    //   backgroundColor: "papayawhip"
-                    // },
-                    content: {
-                      // color: "lightsteelblue"
-                    }
-                  }}
-                >
-                  <p>Modal text!</p>
-                  <button onClick={this.handleCloseModal}>Close Modal</button>
-                </ReactModal>
+                <Modal
+                  showModal={this.state.showModal}
+                  closeModal={this.handleCloseModal}
+                />
               </li>
             </NavItems>
             <NavItems>
@@ -62,7 +59,7 @@ class Navbar extends Component {
             </NavItems>
             <NavItems>
               <li>
-                <Text as="a" href="https://www.google.com/">
+                <Text as="a" href="/login">
                   Logout
                 </Text>
               </li>

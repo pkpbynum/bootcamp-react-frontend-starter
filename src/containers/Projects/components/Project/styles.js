@@ -10,10 +10,11 @@ export const Card = styled(Flex)`
   align-items: center;
   margin: 3em;
   border-radius: 5px;
+  width: 25%;
 `;
 
 export const Title = styled(Flex)`
-  font-size: 3em;
+  font-size: 2em;
   margin-bottom: 0.5em;
   font-family: ${({ theme }) => theme.fonts.openSans.family};
 `;
@@ -28,9 +29,15 @@ export const Button = styled.button`
   margin-top: 2em;
   padding: 0.25em 1em;
   height: 2.5em;
-  width: 100%;
+  width: 25%;
   background-color: ${({ theme }) => theme.colors.purpleNavy};
   border-color: ${({ theme }) => theme.colors.purpleNavy};
   color: white;
   font-size: 1em;
+`;
+
+export const Container = styled(Flex)`
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-between;
 `;
