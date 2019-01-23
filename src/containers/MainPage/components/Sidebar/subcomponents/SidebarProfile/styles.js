@@ -13,3 +13,9 @@ export const Container = styled(Flex)`
   flex-direction: column;
   align-items: center;
 `;
+
+export const UserName = styled.p`
+  color: white;
+  font-size: 0.8em;
+  font-family: ${({ theme }) => theme.fonts.openSans.family};
+`;
