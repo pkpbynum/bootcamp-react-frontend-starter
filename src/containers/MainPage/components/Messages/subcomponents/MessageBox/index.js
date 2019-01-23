@@ -37,7 +37,7 @@ class MessageBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeId: 0
+      activeId: 1
     };
   }
 
