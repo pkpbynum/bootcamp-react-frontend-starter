@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import {
   Container,
   RegisterContainer,
@@ -7,25 +7,26 @@ import {
   Label,
   Button,
   Text
-} from './styles'
+} from "./styles";
 
-import CREATE_USER from './queries'
-import { Mutation, withApollo } from 'react-apollo'
+import CREATE_USER from "./queries";
+import { Mutation, withApollo } from "react-apollo";
 
 class Register extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      firstname: '',
-      lastname: '',
-      email: '',
-      password: ''
-    }
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: "",
+      phone: ""
+    };
   }
 
   updateInput = e => {
-    this.setState({ [e.target.name]: e.target.value })
-  }
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   render() {
     return (
@@ -53,6 +54,13 @@ class Register extends Component {
             onChange={this.updateInput}
             value={this.state.email}
           />
+          <Label>Phone Number</Label>
+          <Input
+            type="text"
+            name="phone"
+            onChange={this.updateInput}
+            value={this.state.phone}
+          />
           <Label>Password</Label>
           <Input
             type="password"
@@ -72,14 +80,14 @@ class Register extends Component {
             }}
           >
             {(addUser, { data }) => {
-              return <Button onClick={addUser}>Sign Up</Button>
+              return <Button onClick={addUser}>Sign Up</Button>;
             }}
           </Mutation>
-          <Text href="/login">Already have an account? Click here!</Text>
+          <Text href="/">Already have an account? Click here!</Text>
         </RegisterContainer>
       </Container>
-    )
+    );
   }
 }
 
-export default withApollo(Register)
+export default withApollo(Register);

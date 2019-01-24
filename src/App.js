@@ -65,7 +65,7 @@ class App extends Component {
                 <Route exact path="/" component={Login} />
                 <PrivateRoute exact path="/projects" component={Projects} />
                 <PrivateRoute exact path="/project" component={MainPage} />
-                <PrivateRoute exact path="/register" component={Register} />
+                <Route exact path="/register" component={Register} />
               </Switch>
             </div>
           </ApolloProvider>
