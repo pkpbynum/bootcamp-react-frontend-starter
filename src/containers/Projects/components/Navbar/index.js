@@ -15,6 +15,7 @@ import {
 } from "./styles";
 // import ReactModal from "react-modal";
 import Modal from "../Modal";
+import store from "store";
 
 class Navbar extends Component {
   constructor() {
@@ -59,7 +60,7 @@ class Navbar extends Component {
             </NavItems>
             <NavItems>
               <li>
-                <Text as="a" href="/login">
+                <Text href="/" onClick={() => store.clearAll()}>
                   Logout
                 </Text>
               </li>

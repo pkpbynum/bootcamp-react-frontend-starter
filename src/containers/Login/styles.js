@@ -63,3 +63,9 @@ export const Text = styled.a`
   font-family: ${({ theme }) => theme.fonts.roboto.family};
   align-self: center;
 `;
+
+export const IncPass = styled.p`
+  font-family: ${({ theme }) => theme.fonts.roboto.family};
+  align-self: center;
+  color: red;
+`;
