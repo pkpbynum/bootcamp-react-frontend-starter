@@ -50,11 +50,11 @@ class Login extends Component {
               password: this.state.password
             }}
           >
-            {(addUser, { data }) => {
+            {(login, { data }) => {
               return (
                 <Button
                   onClick={() => {
-                    addUser();
+                    login();
                   }}
                 >
                   Login
