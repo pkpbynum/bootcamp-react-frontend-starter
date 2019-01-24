@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import uuidv4 from 'uuid/v4'
 import { Card, Title, Members, Button, Container } from './styles'
 import PROJECTS from './queries'
 import { Query, withApollo } from 'react-apollo'
@@ -15,7 +16,9 @@ import { Query, withApollo } from 'react-apollo'
 class Project extends Component {
   constructor(props) {
     super(props)
-    this.state = { name: '', members: { firstName: '' } }
+    this.state = {
+      id: '6141c855-472b-45af-850a-5efff892fcd5'
+    }
   }
 
   render() {
@@ -23,8 +26,7 @@ class Project extends Component {
       <Query
         query={PROJECTS}
         variables={{
-          name: this.state.name,
-          members: this.state.members.firstName
+          userId: this.state.id
         }}
       >
         {({ loading, error, data }) => {
@@ -32,10 +34,10 @@ class Project extends Component {
           if (error) return `Error!: ${error}`
 
           console.log(data)
-          const cards = PROJECTS.map(PROJECTS => (
-            <Card>
-              <Title>{PROJECTS.name}</Title>
-              <Members>{PROJECTS.members.firstName}</Members>
+          const cards = data.projects.map(project => (
+            <Card key={uuidv4()}>
+              <Title>{project.name}</Title>
+              <Members>{project.members.firstName}</Members>
               <Button>View</Button>
             </Card>
           ))
