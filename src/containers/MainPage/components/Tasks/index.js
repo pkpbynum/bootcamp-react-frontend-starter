@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Title } from "./styles";
 import TasksDropdown from "./subcomponents/TasksDropdown";
+import AllTasks from "./subcomponents/AllTasks";
 
 class Tasks extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class Tasks extends React.Component {
           filtered={this.state.filterId}
           setFilterId={this.setFilterId}
         />
+        <AllTasks />
       </Container>
     );
   }
