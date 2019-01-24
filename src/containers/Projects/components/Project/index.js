@@ -152,12 +152,9 @@ const projects = [
 ];
 
 class Project extends Component {
-  // constructor() {
-  //   super();
-  // }
   render() {
-    const cards = projects.map(project => (
-      <Card>
+    const cards = projects.map((project, ind) => (
+      <Card key={ind}>
         <Title>{project.name}</Title>
         <Members>{project.members.join(", ")}</Members>
         <Button>View</Button>
