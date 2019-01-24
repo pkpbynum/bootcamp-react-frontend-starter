@@ -14,9 +14,6 @@ class Sidebar extends React.Component {
           <SidebarLink onClick={() => this.props.changePage("messages")}>
             Messages
           </SidebarLink>
-          <SidebarLink onClick={() => this.props.changePage("meetings")}>
-            Meetings
-          </SidebarLink>
         </Group>
         <Group>
           <BottomLink to="/projects">Back to Projects</BottomLink>

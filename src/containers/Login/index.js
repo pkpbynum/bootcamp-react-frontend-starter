@@ -8,50 +8,63 @@ import {
   Button,
   Text
 } from "./styles";
+import LOGIN_USER from "./queries";
 import { Mutation, withApollo } from "react-apollo";
-import LOGIN from "./mutations";
 
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { email: "", password: "" };
+    this.state = {
+      email: "",
+      password: ""
+    };
   }
 
-  onChange = (key, e) => {
-    this.setState({ [key]: e.target.value });
+  updateInput = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
+
   render() {
     return (
-      <Mutation
-        mutation={LOGIN}
-        variables={{ email: this.state.email, password: this.state.password }}
-      >
-        {(loginUser, { data }) => (
-          <Container>
-            <LoginContainer>
-              <Title>Welcome back!</Title>
-              <Label>Username/Email</Label>
-              <Input onChange={e => this.onChange("email", e)} />
-              <Label>Password</Label>
-              <Input
-                type="password"
-                onChange={e => this.onChange("password", e)}
-              />
-              <Button
-                onClick={() => {
-                  console.log(data);
-                  return loginUser;
-                }}
-              >
-                Login
-              </Button>
-              <Text as="a" href="/register">
-                New user? Click here!
-              </Text>
-            </LoginContainer>
-          </Container>
-        )}
-      </Mutation>
+      <Container>
+        <LoginContainer>
+          <Title>Welcome back!</Title>
+          <Label>Email</Label>
+          <Input
+            type="text"
+            name="email"
+            onChange={this.updateInput}
+            value={this.state.email}
+          />
+          <Label>Password</Label>
+          <Input
+            type="password"
+            name="password"
+            onChange={this.updateInput}
+            value={this.state.password}
+          />
+          <Mutation
+            mutation={LOGIN_USER}
+            variables={{
+              email: this.state.email,
+              password: this.state.password
+            }}
+          >
+            {(addUser, { data }) => {
+              return (
+                <Button
+                  onClick={() => {
+                    addUser();
+                  }}
+                >
+                  Login
+                </Button>
+              );
+            }}
+          </Mutation>
+          <Text href="/register">New user? Click here!</Text>
+        </LoginContainer>
+      </Container>
     );
   }
 }
