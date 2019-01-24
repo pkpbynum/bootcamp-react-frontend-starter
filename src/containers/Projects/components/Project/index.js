@@ -1,169 +1,49 @@
-import React, { Component } from "react";
-import { Card, Title, Members, Button, Container } from "./styles";
-// import { Flex } from "grid-styled";
-const projects = [
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 2,
-    name: "Project",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 3,
-    name: "Project 2",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 4,
-    name: "Project Again",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 5,
-    name: "More Project",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  },
-  {
-    id: 1,
-    name: "poop",
-    createdAt: "5 am",
-    task: "whack",
-    members: ["Ben", "Peter", "Zuzanna", "Carolyn"]
-  }
-];
+import React, { Component } from 'react'
+import { Card, Title, Members, Button, Container } from './styles'
+import PROJECTS from './queries'
+import { Query, withApollo } from 'react-apollo'
+// const projects = [
+//   {
+//     id: 1,
+//     name: 'poop',
+//     createdAt: '5 am',
+//     task: 'whack',
+//     members: ['Ben', 'Peter', 'Zuzanna', 'Carolyn']
+//   }
+// ]
 
 class Project extends Component {
-  // constructor() {
-  //   super();
-  // }
+  constructor(props) {
+    super(props)
+    this.state = { name: '', members: { firstName: '' } }
+  }
+
   render() {
-    const cards = projects.map(project => (
-      <Card>
-        <Title>{project.name}</Title>
-        <Members>{project.members.join(", ")}</Members>
-        <Button>View</Button>
-      </Card>
-    ));
-    return <Container>{cards}</Container>;
+    return (
+      <Query
+        query={PROJECTS}
+        variables={{
+          name: this.state.name,
+          members: this.state.members.firstName
+        }}
+      >
+        {({ loading, error, data }) => {
+          if (loading) return null
+          if (error) return `Error!: ${error}`
+
+          console.log(data)
+          const cards = PROJECTS.map(PROJECTS => (
+            <Card>
+              <Title>{PROJECTS.name}</Title>
+              <Members>{PROJECTS.members.firstName}</Members>
+              <Button>View</Button>
+            </Card>
+          ))
+
+          return <Container>{cards}</Container>
+        }}
+      </Query>
+    )
   }
 }
-export default Project;
+export default withApollo(Project)
