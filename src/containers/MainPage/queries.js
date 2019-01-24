@@ -1,5 +1,25 @@
 import gql from "graphql-tag";
 
-const GET_PROJECT = gql``;
+const MESSAGES = gql`
+  query($projectId: ID!) {
+    messages(projectId: $projectId) {
+      content
+      userId
+      createdAt
+      title
+    }
+  }
+`;
 
-export default GET_PROJECT;
+export default TASKS = gql`
+   query($projectId: ID!) {
+    tasks(projectId: $projectId) {
+      content
+      userId
+      deadline
+      status
+    }
+  }
+`;
+
+export default MESSAGES;
