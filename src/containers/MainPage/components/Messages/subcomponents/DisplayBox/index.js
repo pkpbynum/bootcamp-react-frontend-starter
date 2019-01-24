@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Title, Author, Date, Content } from "./styles";
-import InputButton from "./subcomponents/InputButton";
+import InputButton from "../../../InputButton";
 import InputBar from "./subcomponents/Input";
 
 class DisplayBox extends React.Component {

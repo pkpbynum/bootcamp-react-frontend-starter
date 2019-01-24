@@ -15,7 +15,8 @@ export const Content = styled(Flex)`
 `;
 
 export const Item = styled(Flex)`
-  width: 8%;
+  width: 100px;
   justify-content: center;
   align-items: center;
+  font-family: ${({ theme }) => theme.fonts.openSans.family};
 `;
