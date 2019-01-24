@@ -6,7 +6,8 @@ import {
   Title,
   Label,
   Button,
-  Text
+  Text,
+  IncPass
 } from "./styles";
 import LOGIN_USER from "./queries";
 import { Mutation, withApollo } from "react-apollo";
@@ -16,12 +17,21 @@ class Login extends Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      incorrectPass: false
     };
   }
 
   updateInput = e => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  goToProjects = data => {
+    if (data.loginUser.token) {
+      this.props.history.push("/projects");
+    } else {
+      this.setState({ incorrectPass: true });
+    }
   };
 
   render() {
@@ -43,18 +53,24 @@ class Login extends Component {
             onChange={this.updateInput}
             value={this.state.password}
           />
+          {this.state.incorrectPass && (
+            <IncPass>Incorrect Email/Password</IncPass>
+          )}
           <Mutation
             mutation={LOGIN_USER}
             variables={{
               email: this.state.email,
               password: this.state.password
             }}
+            onCompleted={data => {
+              this.goToProjects(data);
+            }}
           >
-            {(addUser, { data }) => {
+            {(login, { data }) => {
               return (
                 <Button
                   onClick={() => {
-                    addUser();
+                    login();
                   }}
                 >
                   Login

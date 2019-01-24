@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Title } from "./styles";
 import TasksDropdown from "./subcomponents/TasksDropdown";
-import AllTasks from "./subcomponents/AllTasks";
+import TasksList from "./subcomponents/TasksList";
 
 class Tasks extends React.Component {
   constructor(props) {
@@ -13,6 +13,9 @@ class Tasks extends React.Component {
 
   setFilterId = id => {
     this.setState({ filterId: id });
+    console.log(
+      this.props.tasks.filter(task => task.userId === this.state.filterId)
+    );
   };
 
   render() {
@@ -20,10 +23,16 @@ class Tasks extends React.Component {
       <Container>
         <Title>Tasks</Title>
         <TasksDropdown
+          members={this.props.members}
           filtered={this.state.filterId}
           setFilterId={this.setFilterId}
         />
-        <AllTasks />
+        <TasksList
+          tasks={this.props.tasks.filter(task => {
+            if (this.state.filterId === "0") return true;
+            return task.userId === this.state.filterId;
+          })}
+        />
       </Container>
     );
   }

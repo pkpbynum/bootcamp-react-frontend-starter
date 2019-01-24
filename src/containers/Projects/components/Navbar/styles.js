@@ -14,7 +14,7 @@ export const NavItems = styled(Flex)`
   padding: 0;
 `;
 
-export const Text = styled(Flex)`
+export const Text = styled.a`
   font-family: ${({ theme }) => theme.fonts.openSans.family};
   color: white;
   text-decoration: none;
