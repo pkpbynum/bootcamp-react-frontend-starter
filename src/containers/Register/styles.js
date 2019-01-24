@@ -57,7 +57,7 @@ export const Button = styled.button`
   font-size: 1em;
 `;
 
-export const Text = styled(Flex)`
+export const Text = styled.a`
   font-size: 1em;
   margin-top: 1em;
   font-family: ${({ theme }) => theme.fonts.roboto.family};
