@@ -6,6 +6,7 @@ const MESSAGES = gql`
       content
       userId
       createdAt
+      title
     }
   }
 `;
