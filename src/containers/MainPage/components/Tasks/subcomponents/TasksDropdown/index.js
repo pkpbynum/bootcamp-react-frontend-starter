@@ -22,7 +22,10 @@ class TasksDropdown extends React.Component {
   render() {
     return (
       <Dropdown active={this.state.active}>
-        {this.props.members
+        {[
+          ...this.props.members,
+          { id: "0", firstName: "All Tasks", lastName: "" }
+        ]
           .sort(({ id }) => this.props.filtered !== id)
           .map(({ id, firstName, lastName }, ind) => (
             <Filter

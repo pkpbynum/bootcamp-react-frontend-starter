@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ApolloClient } from "apollo-client";
 import { ApolloProvider } from "react-apollo";
-import { Switch, Route, Router } from "react-router-dom";
+import { Switch, Route, Router, Redirect } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import Projects from "./containers/Projects/";
@@ -19,7 +19,6 @@ const history = createBrowserHistory();
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   const user = store.get("user");
-  console.log(user);
   const token = user ? user.token : null;
   if (token) {
     operation.setContext({
@@ -42,6 +41,19 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      store.get("user") ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+      )
+    }
+  />
+);
+
 class App extends Component {
   render() {
     return (
@@ -50,10 +62,10 @@ class App extends Component {
           <ApolloProvider client={client}>
             <div className="App">
               <Switch>
-                <Route path="/projects" component={Projects} />
-                <Route path="/project" component={MainPage} />
                 <Route exact path="/" component={Login} />
-                <Route path="/register" component={Register} />
+                <PrivateRoute exact path="/projects" component={Projects} />
+                <PrivateRoute exact path="/project" component={MainPage} />
+                <PrivateRoute exact path="/register" component={Register} />
               </Switch>
             </div>
           </ApolloProvider>

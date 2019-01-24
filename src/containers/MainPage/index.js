@@ -7,15 +7,14 @@ import { Query, withApollo } from "react-apollo";
 
 const ContentSelector = ({ pageName }) => {
   if (pageName === "tasks") return <Tasks members={members} tasks={tasks} />;
-  return <Messages members={members} />;
+  return <Messages messages={messages} members={members} />;
 };
 
 const members = [
   { id: "1", firstName: "Peter", lastName: "last1" },
   { id: "2", firstName: "Ben", lastName: "last2" },
   { id: "3", firstName: "Carolyn", lastName: "last3" },
-  { id: "4", firstName: "Zuzanna", lastName: "last4" },
-  { id: "0", firstName: "All Tasks", lastName: "" }
+  { id: "4", firstName: "Zuzanna", lastName: "last4" }
 ];
 
 const tasks = [
@@ -49,6 +48,36 @@ const tasks = [
   }
 ];
 
+const messages = [
+  {
+    id: 1,
+    title: "title1",
+    content: "content1",
+    author: "author1",
+    createdAt: "today"
+  },
+  {
+    id: 2,
+    title: "title2",
+    content: "content2",
+    author: "author2",
+    createdAt: "tomorrow"
+  },
+  {
+    id: 3,
+    title: "title3",
+    content: "content3",
+    author: "author3",
+    createdAt: "in two days"
+  },
+  {
+    id: 4,
+    title: "title4",
+    content: "content4",
+    author: "author4",
+    createdAt: "in three days"
+  }
+];
 class MainPage extends Component {
   constructor(props) {
     super(props);

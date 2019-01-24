@@ -22,7 +22,10 @@ class Messages extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <MessageBox setDisplay={this.setDisplay} />
+        <MessageBox
+          messages={this.props.messages}
+          setDisplay={this.setDisplay}
+        />
         <DisplayBox message={this.state.currentMessage} />
       </React.Fragment>
     );
