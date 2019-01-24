@@ -3,6 +3,7 @@ import uuidv4 from 'uuid/v4'
 import { Card, Title, Members, Button, Container } from './styles'
 import PROJECTS from './queries'
 import { Query, withApollo } from 'react-apollo'
+import store from 'store'
 // const projects = [
 //   {
 //     id: 1,
@@ -17,7 +18,7 @@ class Project extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      id: '6141c855-472b-45af-850a-5efff892fcd5'
+      id: store.get('user').id
     }
   }
 
