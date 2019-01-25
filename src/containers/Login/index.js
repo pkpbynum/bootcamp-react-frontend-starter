@@ -35,7 +35,6 @@ class Login extends Component {
         lastName: data.loginUser.user.lastName,
         token: data.loginUser.token
       });
-      console.log(store.get("user"));
       this.props.history.push("/projects");
     } else {
       this.setState({ incorrectPass: true });

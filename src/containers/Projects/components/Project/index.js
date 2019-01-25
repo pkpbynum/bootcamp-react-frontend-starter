@@ -7,10 +7,10 @@ import { withRouter } from "react-router-dom";
 
 class Project extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      id: store.get("user").id
-    };
+      id: store.get('user').id
+    }
   }
 
   openProject = async (id, members, code) => {
@@ -26,9 +26,9 @@ class Project extends Component {
           userId: this.state.id
         }}
       >
-        {({ loading, error, data }) => {
-          if (loading) return null;
-          if (error) return `Error!: ${error}`;
+        {({ loading, error, data, refetch }) => {
+          if (loading) return null
+          if (error) return `Error!: ${error}`
 
           const cards = data.projects.map((project, ind) => (
             <Card key={ind}>
@@ -42,12 +42,16 @@ class Project extends Component {
                 View
               </Button>
             </Card>
-          ));
+          ))
 
-          return <Container>{cards}</Container>;
+          return <Container>{cards}</Container>
         }}
       </Query>
-    );
+    )
   }
 }
+<<<<<<< HEAD
 export default withRouter(withApollo(Project));
+=======
+export default withApollo(Project)
+>>>>>>> 0723cb141182461e6b6a1d6d268da69aa3b066bf
