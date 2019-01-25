@@ -31,7 +31,7 @@ class Login extends Component {
     if (data.loginUser.token) {
       store.set("user", {
         id: data.loginUser.user.id,
-        token: data.loginUser.user.token
+        token: data.loginUser.token
       });
       this.props.history.push("/projects");
     } else {

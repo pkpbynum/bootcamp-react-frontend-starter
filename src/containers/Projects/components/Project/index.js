@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
-import uuidv4 from 'uuid/v4'
-import { Card, Title, Members, Button, Container } from './styles'
-import PROJECTS from './queries'
-import { Query, withApollo } from 'react-apollo'
+import React, { Component } from "react";
+import uuidv4 from "uuid/v4";
+import { Card, Title, Members, Button, Container } from "./styles";
+import PROJECTS from "./queries";
+import { Query, withApollo } from "react-apollo";
+import store from "store";
 // const projects = [
 //   {
 //     id: 1,
@@ -15,11 +16,16 @@ import { Query, withApollo } from 'react-apollo'
 
 class Project extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      id: '6141c855-472b-45af-850a-5efff892fcd5'
-    }
+      id: store.get("user").id
+    };
   }
+
+  openProject = id => {
+    store.set("project", { id });
+    this.props.history.push("/project");
+  };
 
   render() {
     return (
@@ -30,22 +36,21 @@ class Project extends Component {
         }}
       >
         {({ loading, error, data }) => {
-          if (loading) return null
-          if (error) return `Error!: ${error}`
+          if (loading) return null;
+          if (error) return `Error!: ${error}`;
 
-          console.log(data)
           const cards = data.projects.map(project => (
             <Card key={uuidv4()}>
               <Title>{project.name}</Title>
               <Members>{project.members.firstName}</Members>
-              <Button>View</Button>
+              <Button onClick={() => this.openProject(project.id)}>View</Button>
             </Card>
-          ))
+          ));
 
-          return <Container>{cards}</Container>
+          return <Container>{cards}</Container>;
         }}
       </Query>
-    )
+    );
   }
 }
-export default withApollo(Project)
+export default withApollo(Project);
