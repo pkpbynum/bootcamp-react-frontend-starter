@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   Container,
   NavItems,
@@ -12,23 +12,29 @@ import {
   // ModalContainer,
   // ModalBottomContainer,
   // ModalInput
-} from "./styles";
+} from './styles'
 // import ReactModal from "react-modal";
-import Modal from "../Modal";
-import store from "store";
+import Modal from '../Modal'
+import store from 'store'
+import JOIN_PROJECT from './mutations'
+import { Mutation, withApollo } from 'react-apollo'
 
 class Navbar extends Component {
-  constructor() {
-    super();
-    this.state = { showModal: false };
+  constructor(props) {
+    super(props)
+    this.state = { showModal: false, id: store.get('user').id, projectCode: '' }
   }
   handleOpenModal = () => {
-    this.setState({ showModal: true });
-  };
+    this.setState({ showModal: true })
+  }
 
   handleCloseModal = () => {
-    this.setState({ showModal: false });
-  };
+    this.setState({ showModal: false })
+  }
+
+  updateInput = e => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
 
   render() {
     return (
@@ -52,9 +58,28 @@ class Navbar extends Component {
                   <Input
                     type="text"
                     placeholder="Enter a project code"
-                    name="code"
+                    name="projectCode"
+                    onChange={this.updateInput}
+                    value={this.state.projectCode}
                   />
-                  <SubmitButton type="submit">Join</SubmitButton>
+                  <Mutation
+                    mutation={JOIN_PROJECT}
+                    variables={{ code: this.state.projectCode }}
+                    // onCompleted={data => {
+                    //   this.props.closeModal()
+                    // }}
+                  >
+                    {(addProject, { data }) => (
+                      <SubmitButton
+                        type="submit"
+                        onClick={() => {
+                          addProject()
+                        }}
+                      >
+                        Join
+                      </SubmitButton>
+                    )}
+                  </Mutation>
                 </form>
               </li>
             </NavItems>
@@ -68,8 +93,8 @@ class Navbar extends Component {
           </Container>
         </ul>
       </nav>
-    );
+    )
   }
 }
 
-export default Navbar;
+export default withApollo(Navbar)

@@ -6,7 +6,8 @@ import {
   ModalButton,
   ModalContainer,
   ModalBottomContainer,
-  ModalInput
+  ModalInput,
+  IncPass
 } from './styles'
 import CREATE_PROJECT from './mutations'
 import { Mutation, withApollo } from 'react-apollo'
@@ -14,7 +15,7 @@ import { Mutation, withApollo } from 'react-apollo'
 class Modal extends Component {
   constructor(props) {
     super(props)
-    this.state = { projectName: '' }
+    this.state = { projectName: '', emptyProjectName: false }
   }
 
   updateInput = e => {
@@ -51,25 +52,27 @@ class Modal extends Component {
               placeholder="Name your project"
               name="projectName"
             />
-            <Mutation
-              mutation={CREATE_PROJECT}
-              variables={{ name: this.state.projectName }}
-              // onCompleted={data => {
-              //   this.props.closeModal()
-              // }}
-            >
-              {(addProject, { data }) => (
-                <ModalButton
-                  type="submit"
-                  onClick={() => {
-                    addProject()
-                    this.props.closeModal()
-                  }}
-                >
-                  Done
-                </ModalButton>
-              )}
-            </Mutation>
+            {this.state.emptyProjectName && (
+              <IncPass>Please enter a name for your project</IncPass>
+            )}
+            <form>
+              <Mutation
+                mutation={CREATE_PROJECT}
+                variables={{ name: this.state.projectName }}
+              >
+                {(addProject, { data }) => (
+                  <ModalButton
+                    type="submit"
+                    onClick={() => {
+                      addProject()
+                      this.props.closeModal()
+                    }}
+                  >
+                    Done
+                  </ModalButton>
+                )}
+              </Mutation>
+            </form>
           </ModalBottomContainer>
         </ReactModal>
       </ModalContainer>

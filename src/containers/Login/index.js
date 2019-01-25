@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   Container,
   LoginContainer,
@@ -8,36 +8,36 @@ import {
   Button,
   Text,
   IncPass
-} from "./styles";
-import LOGIN_USER from "./queries";
-import { Mutation, withApollo } from "react-apollo";
-import store from "store";
+} from './styles'
+import LOGIN_USER from './queries'
+import { Mutation, withApollo } from 'react-apollo'
+import store from 'store'
 
 class Login extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
       incorrectPass: false
-    };
+    }
   }
 
   updateInput = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+    this.setState({ [e.target.name]: e.target.value })
+  }
 
   goToProjects = data => {
     if (data.loginUser.token) {
-      store.set("user", {
+      store.set('user', {
         id: data.loginUser.user.id,
         token: data.loginUser.token
-      });
-      this.props.history.push("/projects");
+      })
+      this.props.history.push('/projects')
     } else {
-      this.setState({ incorrectPass: true });
+      this.setState({ incorrectPass: true })
     }
-  };
+  }
 
   render() {
     return (
@@ -68,26 +68,26 @@ class Login extends Component {
               password: this.state.password
             }}
             onCompleted={data => {
-              this.goToProjects(data);
+              this.goToProjects(data)
             }}
           >
             {(login, { data }) => {
               return (
                 <Button
                   onClick={() => {
-                    login();
+                    login()
                   }}
                 >
                   Login
                 </Button>
-              );
+              )
             }}
           </Mutation>
           <Text href="/register">New user? Click here!</Text>
         </LoginContainer>
       </Container>
-    );
+    )
   }
 }
 
-export default withApollo(Login);
+export default withApollo(Login)

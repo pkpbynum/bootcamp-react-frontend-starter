@@ -4,15 +4,6 @@ import { Card, Title, Members, Button, Container } from './styles'
 import PROJECTS from './queries'
 import { Query, withApollo } from 'react-apollo'
 import store from 'store'
-// const projects = [
-//   {
-//     id: 1,
-//     name: 'poop',
-//     createdAt: '5 am',
-//     task: 'whack',
-//     members: ['Ben', 'Peter', 'Zuzanna', 'Carolyn']
-//   }
-// ]
 
 class Project extends Component {
   constructor(props) {
@@ -35,7 +26,7 @@ class Project extends Component {
           userId: this.state.id
         }}
       >
-        {({ loading, error, data }) => {
+        {({ loading, error, data, refetch }) => {
           if (loading) return null
           if (error) return `Error!: ${error}`
 
