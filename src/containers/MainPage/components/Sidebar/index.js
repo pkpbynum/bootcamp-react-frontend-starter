@@ -1,6 +1,8 @@
 import React from "react";
 import { SidebarWrap, SidebarLink, BottomLink, Group } from "./styles";
 import SidebarProfile from "./subcomponents/SidebarProfile";
+import { withRouter } from "react-router-dom";
+import store from "store";
 
 class Sidebar extends React.Component {
   render() {
@@ -17,7 +19,9 @@ class Sidebar extends React.Component {
         </Group>
         <Group>
           <BottomLink to="/projects">Back to Projects</BottomLink>
-          <BottomLink to="#">Logout</BottomLink>
+          <BottomLink onClick={() => store.clearAll()} to="/">
+            Logout
+          </BottomLink>
         </Group>
       </SidebarWrap>
     );

@@ -33,6 +33,8 @@ class Register extends Component {
     if (data.createUser.token) {
       store.set("user", {
         id: data.createUser.user.id,
+        firstName: data.createUser.user.firstName,
+        lastName: data.createUser.user.lastName,
         token: data.createUser.token
       });
       this.props.history.push("/projects");

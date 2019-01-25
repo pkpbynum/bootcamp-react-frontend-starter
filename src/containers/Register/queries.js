@@ -1,9 +1,11 @@
-import gql from 'graphql-tag'
+import gql from "graphql-tag";
 
 const CREATE_USER = gql`
   mutation($input: CreateUserInput!) {
     createUser(input: $input) {
       user {
+        firstName
+        lastName
         id
       }
       token
@@ -12,6 +14,6 @@ const CREATE_USER = gql`
       }
     }
   }
-`
+`;
 
-export default CREATE_USER
+export default CREATE_USER;

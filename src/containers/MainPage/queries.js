@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const MESSAGES = gql`
+export const MESSAGES = gql`
   query($projectId: ID!) {
     messages(projectId: $projectId) {
       content
@@ -11,8 +11,8 @@ const MESSAGES = gql`
   }
 `;
 
-export default TASKS = gql`
-   query($projectId: ID!) {
+export const TASKS = gql`
+  query($projectId: ID!) {
     tasks(projectId: $projectId) {
       content
       userId
@@ -21,5 +21,3 @@ export default TASKS = gql`
     }
   }
 `;
-
-export default MESSAGES;

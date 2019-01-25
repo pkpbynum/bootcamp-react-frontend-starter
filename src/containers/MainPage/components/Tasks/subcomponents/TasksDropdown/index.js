@@ -17,6 +17,7 @@ class TasksDropdown extends React.Component {
 
   setSelected = id => {
     this.setState({ selected: id });
+    console.log(this.state.selected);
   };
 
   render() {

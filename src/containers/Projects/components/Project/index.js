@@ -1,18 +1,9 @@
 import React, { Component } from "react";
-import uuidv4 from "uuid/v4";
 import { Card, Title, Members, Button, Container } from "./styles";
 import PROJECTS from "./queries";
 import { Query, withApollo } from "react-apollo";
 import store from "store";
-// const projects = [
-//   {
-//     id: 1,
-//     name: 'poop',
-//     createdAt: '5 am',
-//     task: 'whack',
-//     members: ['Ben', 'Peter', 'Zuzanna', 'Carolyn']
-//   }
-// ]
+import { withRouter } from "react-router-dom";
 
 class Project extends Component {
   constructor(props) {
@@ -22,8 +13,8 @@ class Project extends Component {
     };
   }
 
-  openProject = id => {
-    store.set("project", { id });
+  openProject = async (id, members, code) => {
+    await store.set("project", { id, members, code });
     this.props.history.push("/project");
   };
 
@@ -39,11 +30,17 @@ class Project extends Component {
           if (loading) return null;
           if (error) return `Error!: ${error}`;
 
-          const cards = data.projects.map(project => (
-            <Card key={uuidv4()}>
+          const cards = data.projects.map((project, ind) => (
+            <Card key={ind}>
               <Title>{project.name}</Title>
               <Members>{project.members.firstName}</Members>
-              <Button onClick={() => this.openProject(project.id)}>View</Button>
+              <Button
+                onClick={() =>
+                  this.openProject(project.id, project.members, project.code)
+                }
+              >
+                View
+              </Button>
             </Card>
           ));
 
@@ -53,4 +50,4 @@ class Project extends Component {
     );
   }
 }
-export default withApollo(Project);
+export default withRouter(withApollo(Project));

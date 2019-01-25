@@ -13,9 +13,7 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
 import { ApolloLink } from "apollo-link";
 import store from "store";
-import { createBrowserHistory } from "history";
-
-const history = createBrowserHistory();
+import history from "./history";
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   const user = store.get("user");

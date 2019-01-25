@@ -18,11 +18,8 @@ class Tasks extends React.Component {
     this.setState({ showInput: !this.state.showInput });
   };
 
-  setFilterId = id => {
-    this.setState({ filterId: id });
-    console.log(
-      this.props.tasks.filter(task => task.userId === this.state.filterId)
-    );
+  setFilterId = async id => {
+    await this.setState({ filterId: id });
   };
 
   render() {

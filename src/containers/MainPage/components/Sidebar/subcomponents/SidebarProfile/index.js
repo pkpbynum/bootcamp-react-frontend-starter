@@ -1,12 +1,16 @@
 import React from "react";
-import { Container, UserPicture, UserName } from "./styles";
+import { Container, UserPicture, Text } from "./styles";
+import store from "store";
 
 class SidebarProfile extends React.Component {
   render() {
     return (
       <Container>
         <UserPicture />
-        <UserName>John Harvard</UserName>
+        <Text>{`${store.get("user").firstName} ${
+          store.get("user").lastName
+        }`}</Text>
+        <Text>{`Code:\n${store.get("project").code}`}</Text>
       </Container>
     );
   }
