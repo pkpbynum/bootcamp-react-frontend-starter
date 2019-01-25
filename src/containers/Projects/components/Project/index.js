@@ -22,6 +22,11 @@ class Project extends Component {
     }
   }
 
+  openProject = id => {
+    store.set('project', { id })
+    this.props.history.push('/project')
+  }
+
   render() {
     return (
       <Query
@@ -34,12 +39,11 @@ class Project extends Component {
           if (loading) return null
           if (error) return `Error!: ${error}`
 
-          console.log(data)
           const cards = data.projects.map(project => (
             <Card key={uuidv4()}>
               <Title>{project.name}</Title>
               <Members>{project.members.firstName}</Members>
-              <Button>View</Button>
+              <Button onClick={() => this.openProject(project.id)}>View</Button>
             </Card>
           ))
 

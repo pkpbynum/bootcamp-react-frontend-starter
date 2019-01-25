@@ -11,6 +11,7 @@ import {
 
 import CREATE_USER from './queries'
 import { Mutation, withApollo } from 'react-apollo'
+import store from 'store'
 
 class Register extends Component {
   constructor(props) {
@@ -26,6 +27,16 @@ class Register extends Component {
 
   updateInput = e => {
     this.setState({ [e.target.name]: e.target.value })
+  }
+
+  goToProjects = data => {
+    if (data.createUser.token) {
+      store.set('user', {
+        id: data.createUser.user.id,
+        token: data.createUser.token
+      })
+      this.props.history.push('/projects')
+    }
   }
 
   render() {
@@ -78,6 +89,9 @@ class Register extends Component {
                 password: this.state.password,
                 phone: this.state.phone
               }
+            }}
+            onCompleted={data => {
+              this.goToProjects(data)
             }}
           >
             {(addUser, { data }) => {
