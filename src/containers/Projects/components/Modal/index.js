@@ -22,6 +22,10 @@ class Modal extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
+  componentDidMount() {
+    ReactModal.setAppElement('body')
+  }
+
   render() {
     return (
       <ModalContainer>
@@ -79,5 +83,7 @@ class Modal extends Component {
     )
   }
 }
+
+// Modal.setAppElement('#app-base')
 
 export default withApollo(Modal)
