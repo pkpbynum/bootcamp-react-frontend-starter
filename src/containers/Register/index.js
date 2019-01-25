@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   Container,
   RegisterContainer,
@@ -7,37 +7,37 @@ import {
   Label,
   Button,
   Text
-} from "./styles";
+} from './styles'
 
-import CREATE_USER from "./queries";
-import { Mutation, withApollo } from "react-apollo";
-import store from "store";
+import CREATE_USER from './queries'
+import { Mutation, withApollo } from 'react-apollo'
+import store from 'store'
 
 class Register extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-      phone: ""
-    };
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: '',
+      phone: ''
+    }
   }
 
   updateInput = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+    this.setState({ [e.target.name]: e.target.value })
+  }
 
   goToProjects = data => {
     if (data.createUser.token) {
-      store.set("user", {
+      store.set('user', {
         id: data.createUser.user.id,
         token: data.createUser.token
-      });
-      this.props.history.push("/projects");
+      })
+      this.props.history.push('/projects')
     }
-  };
+  }
 
   render() {
     return (
@@ -91,18 +91,18 @@ class Register extends Component {
               }
             }}
             onCompleted={data => {
-              this.goToProjects(data);
+              this.goToProjects(data)
             }}
           >
             {(addUser, { data }) => {
-              return <Button onClick={addUser}>Sign Up</Button>;
+              return <Button onClick={addUser}>Sign Up</Button>
             }}
           </Mutation>
           <Text href="/">Already have an account? Click here!</Text>
         </RegisterContainer>
       </Container>
-    );
+    )
   }
 }
 
-export default withApollo(Register);
+export default withApollo(Register)
